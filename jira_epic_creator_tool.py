@@ -4,15 +4,15 @@ from dotenv import load_dotenv
 import os
 
 
-class JiraCreatorTool(BaseTool):
-    name: str = "JiraCreatorTool"
+class JiraEpicCreatorTool(BaseTool):
+    name: str = "JiraEpicCreatorTool"
     description: str = (
         """
-        This tool is able to create a Jira issue using summary, description, type.
+        This tool is able to create a Jira Epic using summary, description, type.
         """
     )
 
-    def _run(self, summary: str, description: str, type: str, parent_key:str=None):
+    def _run(self, summary: str, description: str, type: str):
         load_dotenv()
         jira_url = os.environ["JIRA_URL"]
         username = os.environ["JIRA_USERNAME"]
@@ -31,8 +31,6 @@ class JiraCreatorTool(BaseTool):
                     "description": description,
                     "issuetype": {"name": type},
                 }
-            if(parent_key):
-                issue_fields["parent"]={"key":parent_key}
             epic_issue = jira.create_issue(
                 fields=issue_fields
             )
@@ -43,7 +41,7 @@ class JiraCreatorTool(BaseTool):
 
 
 if __name__ == "__main__":
-    tool = JiraCreatorTool()
+    tool = JiraEpicCreatorTool()
     key = tool._run(
         "create a button unit test", "create a material button unit test story", "Story"
     )

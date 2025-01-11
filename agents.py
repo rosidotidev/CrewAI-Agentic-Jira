@@ -1,9 +1,11 @@
 from crewai import Agent, Task, Crew
 from jira_reader_tool import JiraReaderTool
-from jira_creator_tool import JiraCreatorTool
+from jira_story_creator_tool import JiraStoryCreatorTool
+from jira_epic_creator_tool import JiraEpicCreatorTool
 
 jira_reader_tool = JiraReaderTool()
-jira_creator_tool = JiraCreatorTool()
+jira_creator_tool_for_story = JiraStoryCreatorTool()
+jira_creator_tool_for_epic=JiraEpicCreatorTool()
 jql_agent = Agent(
     role="Jira JQL Expert",
     goal="produce only JQL (Jira Query Language) queries accordingly with task to execute",
@@ -41,8 +43,8 @@ jql_executor_agent = Agent(
 
 jira_creator_agent = Agent(
     role="Jira Creator Agent",
-    goal="create Jira issues using tool, if the issue is an Epic return the Epic key",
+    goal="create Jira issues using the right tool, if the issue is an Epic return the Epic key",
     verbose=True,
-    tools=[jira_creator_tool],
+    tools=[jira_creator_tool_for_story,jira_creator_tool_for_epic],
     backstory=("Able to connect to the right tool and create jira issue, understand if it is a Story or an Epic"),
 )
