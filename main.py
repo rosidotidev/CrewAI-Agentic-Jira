@@ -74,4 +74,4 @@ def main(action: str):
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_act_cpo_1")
+    main("do_test_read")

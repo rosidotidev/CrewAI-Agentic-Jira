@@ -18,7 +18,7 @@ jira_backlog_task = Task(
                 {user_story}
                 --------------------
                 produce a backlog""",
-    expected_output="produce a list of jira user story",
+    expected_output="produce a list of jira user story starting with a blank line and using markdown language",
     agent=jira_po_agent,
 )
 
