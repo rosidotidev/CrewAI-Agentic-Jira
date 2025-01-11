@@ -41,8 +41,8 @@ jql_executor_agent = Agent(
 
 jira_creator_agent = Agent(
     role="Jira Creator Agent",
-    goal="create Jira issues using tool",
+    goal="create Jira issues using tool, if the issue is an Epic return the Epic key",
     verbose=True,
     tools=[jira_creator_tool],
-    backstory=("Able to connect to the right tool and create jira issue"),
+    backstory=("Able to connect to the right tool and create jira issue, understand if it is a Story or an Epic"),
 )

@@ -7,10 +7,12 @@ import os
 class JiraCreatorTool(BaseTool):
     name: str = "JiraCreatorTool"
     description: str = (
-        "This tool is able to create a Jira issue using summary, description and type"
+        """
+        This tool is able to create a Jira issue using summary, description, type.
+        """
     )
 
-    def _run(self, summary: str, description: str, type: str):
+    def _run(self, summary: str, description: str, type: str, parent_key:str=None):
         load_dotenv()
         jira_url = os.environ["JIRA_URL"]
         username = os.environ["JIRA_USERNAME"]
@@ -23,13 +25,16 @@ class JiraCreatorTool(BaseTool):
             # permissions = jira.my_permissions()
             meta = jira.createmeta(projectKeys="COBA")
             print(meta)
-            epic_issue = jira.create_issue(
-                fields={
+            issue_fields={
                     "project": {"key": "COBA"},
                     "summary": summary,
                     "description": description,
                     "issuetype": {"name": type},
                 }
+            if(parent_key):
+                issue_fields["parent"]={"key":parent_key}
+            epic_issue = jira.create_issue(
+                fields=issue_fields
             )
             print(epic_issue)
             return epic_issue.key
@@ -40,6 +45,6 @@ class JiraCreatorTool(BaseTool):
 if __name__ == "__main__":
     tool = JiraCreatorTool()
     key = tool._run(
-        "create a button unit test", "create a material button unit test", "Epic"
+        "create a button unit test", "create a material button unit test story", "Story"
     )
     print(f"Key: {key}")
