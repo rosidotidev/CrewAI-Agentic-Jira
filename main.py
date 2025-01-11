@@ -40,6 +40,18 @@ As Integration Architect I need to produce a new REST API for the entity 'slots'
     }
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
+def do_test_act_cpo_1(crew):
+    inputs = {
+        "user_story": """
+As product owner I want to add a new functionality to ecommerce: evaluate shopping.
+This functionality has this features:
+- A new Angular UI called Evaluate Shopping where it is possible to search an ordered products
+- Capability to give a vote to the the ordered products
+- A new backend service to associate a vote to the ordered product
+                """,
+    }
+    result = crew.kickoff(inputs=inputs)
+    print(f"test_act_cpo----> \r\n{result}")
 
 
 def main(action: str):
@@ -92,10 +104,12 @@ def main(action: str):
             do_test_act_po(crew_jira_PO)
         case "do_test_act_cpo":
             do_test_act_cpo(crew_jira_PO_data_entry)
+        case "do_test_act_cpo_1":
+            do_test_act_cpo_1(crew_jira_PO_data_entry)
         case _:
             print("no action")
 
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_act_cpo")
+    main("do_test_act_cpo_1")

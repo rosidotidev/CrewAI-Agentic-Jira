@@ -17,16 +17,14 @@ class JiraStoryCreatorTool(BaseTool):
         jira_url = os.environ["JIRA_URL"]
         username = os.environ["JIRA_USERNAME"]
         api_token = os.environ["JIRA_API_TOKEN"]
+        jira_project = os.environ["JIRA_PROJECT"]
         jira_options = {"server": jira_url}
 
         try:
             # Login
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
-            # permissions = jira.my_permissions()
-            meta = jira.createmeta(projectKeys="COBA")
-            print(meta)
             issue_fields={
-                    "project": {"key": "COBA"},
+                    "project": {"key": jira_project},
                     "summary": summary,
                     "description": description,
                     "issuetype": {"name": type},

@@ -28,7 +28,7 @@ jira_po_agent = Agent(
         defining for each activity:
         - type (can be Story or Epic)
         - summary
-        - description (including acceptance criteria)
+        - description (split in two parts: Details and Acceptance Criteria)
         """
     ),
 )
@@ -43,7 +43,8 @@ jql_executor_agent = Agent(
 
 jira_creator_agent = Agent(
     role="Jira Creator Agent",
-    goal="create Jira issues using the right tool, if the issue is an Epic return the Epic key",
+    goal="create Jira issues using the right tool, if the issue is an Epic return the Epic key."
+         "If the description contains the acceptance criteria, format them im markup",
     verbose=True,
     tools=[jira_creator_tool_for_story,jira_creator_tool_for_epic],
     backstory=("Able to connect to the right tool and create jira issue, understand if it is a Story or an Epic"),
