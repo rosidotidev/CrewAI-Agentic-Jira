@@ -53,4 +53,4 @@ class JiraCleanerUtil:
 if __name__ == "__main__":
     jira_util = JiraCleanerUtil()
     jira_util.removeAll("COBA")
-    #jira_util.removebyKey("COBA-115")
+    # jira_util.removebyKey("COBA-115")

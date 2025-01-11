@@ -12,7 +12,7 @@ class JiraStoryCreatorTool(BaseTool):
         """
     )
 
-    def _run(self, summary: str, description: str, type: str, parent_key:str=None):
+    def _run(self, summary: str, description: str, type: str, parent_key: str = None):
         load_dotenv()
         jira_url = os.environ["JIRA_URL"]
         username = os.environ["JIRA_USERNAME"]
@@ -23,17 +23,15 @@ class JiraStoryCreatorTool(BaseTool):
         try:
             # Login
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
-            issue_fields={
-                    "project": {"key": jira_project},
-                    "summary": summary,
-                    "description": description,
-                    "issuetype": {"name": type},
-                }
-            if(parent_key):
-                issue_fields["parent"]={"key":parent_key}
-            epic_issue = jira.create_issue(
-                fields=issue_fields
-            )
+            issue_fields = {
+                "project": {"key": jira_project},
+                "summary": summary,
+                "description": description,
+                "issuetype": {"name": type},
+            }
+            if parent_key:
+                issue_fields["parent"] = {"key": parent_key}
+            epic_issue = jira.create_issue(fields=issue_fields)
             print(epic_issue)
             return epic_issue.key
         except Exception as e:

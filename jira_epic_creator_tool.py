@@ -18,7 +18,7 @@ class JiraEpicCreatorTool(BaseTool):
         username = os.environ["JIRA_USERNAME"]
         api_token = os.environ["JIRA_API_TOKEN"]
         jira_options = {"server": jira_url}
-        jira_project=os.environ["JIRA_PROJECT"]
+        jira_project = os.environ["JIRA_PROJECT"]
 
         try:
             # Login
@@ -26,15 +26,13 @@ class JiraEpicCreatorTool(BaseTool):
             # permissions = jira.my_permissions()
             meta = jira.createmeta(projectKeys=jira_project)
             print(meta)
-            issue_fields={
-                    "project": {"key": jira_project},
-                    "summary": summary,
-                    "description": description,
-                    "issuetype": {"name": type},
-                }
-            epic_issue = jira.create_issue(
-                fields=issue_fields
-            )
+            issue_fields = {
+                "project": {"key": jira_project},
+                "summary": summary,
+                "description": description,
+                "issuetype": {"name": type},
+            }
+            epic_issue = jira.create_issue(fields=issue_fields)
             print(epic_issue)
             return epic_issue.key
         except Exception as e:

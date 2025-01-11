@@ -1,8 +1,5 @@
 from dotenv import load_dotenv
-from crewai import Task, Crew
-from jira_reader_tool import JiraReaderTool
-from agents import jira_po_agent, jql_executor_agent, jql_agent, jira_creator_agent
-
+from crews import crew, crew_jira_PO, crew_jira_PO_data_entry
 
 def do_test_read(crew):
     inputs = {
@@ -40,6 +37,8 @@ As Integration Architect I need to produce a new REST API for the entity 'slots'
     }
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
+
+
 def do_test_act_cpo_1(crew):
     inputs = {
         "user_story": """
@@ -53,50 +52,11 @@ This functionality has this features:
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
 
-
 def main(action: str):
     print("Hello crewAI")
-    jira_reader_tool = JiraReaderTool()
+    #jira_reader_tool = JiraReaderTool()
     # write all tasks, tools and crew here
-    jql_task = Task(
-        description="generate the JQL query" "required to solve this ask:{ask}",
-        expected_output="a string and only a string for JQL with no unuseful white space",
-        agent=jql_agent,
-    )
-    jql_exe_task = Task(
-        description="execute the query retrieved by the Jira JQL Expert",
-        expected_output="a string and only with all the result of the query",
-        agent=jql_executor_agent,
-    )
 
-    jira_backlog_task = Task(
-        description="""Given this user story:
-                    --------------------    
-                    {user_story}
-                    --------------------
-                    produce a backlog""",
-        expected_output="produce a list of jira user story",
-        agent=jira_po_agent,
-    )
-
-    jira_data_entry_task = Task(
-        description="able to create jira user story or Epic defined by Jira PO Agent",
-        expected_output="create a list of new jira user stories (or an Epic) on Jira",
-        agent=jira_creator_agent,
-    )
-
-    crew = Crew(
-        agents=[jql_agent, jql_executor_agent],
-        tasks=[jql_task, jql_exe_task],
-        verbose=True,
-    )
-
-    crew_jira_PO = Crew(agents=[jira_po_agent], tasks=[jira_backlog_task], verbose=True)
-    crew_jira_PO_data_entry = Crew(
-        agents=[jira_po_agent, jira_creator_agent],
-        tasks=[jira_backlog_task, jira_data_entry_task],
-        verbose=True,
-    )
     match action:
         case "do_test_read":
             do_test_read(crew)
