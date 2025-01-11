@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from crews import crew, crew_jira_PO, crew_jira_PO_data_entry
 
+
 def do_test_read(crew):
     inputs = {
         "ask": "all the issues assigned to 'rosi Doti' in status In Progress",
@@ -52,9 +53,10 @@ This functionality has this features:
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
 
+
 def main(action: str):
     print("Hello crewAI")
-    #jira_reader_tool = JiraReaderTool()
+    # jira_reader_tool = JiraReaderTool()
     # write all tasks, tools and crew here
 
     match action:
