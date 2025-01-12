@@ -1,5 +1,5 @@
 from crewai import Task
-from agents import jira_po_agent, jql_executor_agent, jql_agent, jira_creator_agent
+from agents import jira_po_agent, jql_executor_agent, jql_agent, jira_creator_agent, markdown_reporter_agent
 
 jql_task = Task(
     description="generate the JQL query" "required to solve this ask:{ask}",
@@ -22,8 +22,39 @@ jira_backlog_task = Task(
     agent=jira_po_agent,
 )
 
-jira_data_entry_task = Task(
+jira_po_data_entry_task = Task(
     description="able to create jira user story or Epic defined by Jira PO Agent",
     expected_output="create a list of new jira user stories (or an Epic) on Jira",
     agent=jira_creator_agent,
+)
+
+jira_data_entry_task = Task(
+    description="Given this backlog"
+                "---------------"
+                "{backlog}"
+                "---------------"
+                "is able to create jira user story or Epic",
+    expected_output="create a list of new jira user stories (or an Epic) on Jira",
+    agent=jira_creator_agent,
+)
+
+markdown_backlog_reporter_task = Task(
+    description="Given a set of input produced by other Agents is able to process their output",
+    expected_output="create a markdown document",
+    context=[jira_backlog_task],
+    agent=markdown_reporter_agent,
+)
+
+markdown_pode_backlog_jira_reporter_task = Task(
+    description="Given a set of input produced by other Agents is able to process their output",
+    expected_output="create a markdown document",
+    context=[jira_po_data_entry_task],
+    agent=markdown_reporter_agent,
+)
+
+markdown_backlog_jira_reporter_task = Task(
+    description="Given a set of input produced by other Agents is able to process their output",
+    expected_output="create a markdown document",
+    context=[jira_data_entry_task],
+    agent=markdown_reporter_agent,
 )

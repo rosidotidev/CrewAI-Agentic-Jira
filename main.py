@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
-from crews import crew, crew_jira_PO, crew_jira_PO_data_entry
+from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry
+from statememnts_repo import devops_backlog
 
 
 def do_test_read(crew):
@@ -53,6 +54,13 @@ This functionality has this features:
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
 
+def do_test_populate_jira_from_backlog(crew):
+    inputs = {
+        "backlog": devops_backlog
+    }
+    result = crew.kickoff(inputs=inputs)
+    print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
+
 
 def main(action: str):
     print("Hello crewAI")
@@ -68,10 +76,12 @@ def main(action: str):
             do_test_act_cpo(crew_jira_PO_data_entry)
         case "do_test_act_cpo_1":
             do_test_act_cpo_1(crew_jira_PO_data_entry)
+        case "do_test_populate_jira_from_backlog":
+            do_test_populate_jira_from_backlog(crew_jira_data_entry)
         case _:
             print("no action")
 
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_read")
+    main("do_test_populate_jira_from_backlog")

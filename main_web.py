@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from crews import crew, crew_jira_PO, crew_jira_PO_data_entry
+from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry
 
 
 def ask(prompt):
@@ -22,6 +22,9 @@ def start_web_app_blue():
     models["crew_jira_PO"] = {"crew": crew_jira_PO,
                               "description": "Create a backlog",
                               "input_field":"user_story"}
+    models["crew_jira_data_entry"] = {"crew": crew_jira_data_entry,
+                                         "description": "Jira User Stories on Jira",
+                                         "input_field": "backlog"}
     models["crew"] = {"crew": crew,
                       "description": "retrieves jira issues",
                       "input_field":"ask"}
