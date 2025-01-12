@@ -19,7 +19,7 @@ def start_web_app_blue():
     models = {}
     models["crew_jira_PO_data_entry"] = {
         "crew": crew_jira_PO_data_entry,
-        "description": "Create a backlog and jira User Stories on Jira",
+        "description": "Create a backlog and Jira User Stories on Jira",
         "input_field": "user_story",
     }
     models["crew_jira_PO"] = {
@@ -29,12 +29,12 @@ def start_web_app_blue():
     }
     models["crew_jira_data_entry"] = {
         "crew": crew_jira_data_entry,
-        "description": "Jira User Stories on Jira",
+        "description": "Create Jira User Stories on Jira",
         "input_field": "backlog",
     }
     models["crew"] = {
         "crew": crew,
-        "description": "retrieves jira issues",
+        "description": "Retrieves jira issues",
         "input_field": "ask",
     }
     create_webapp(models)
