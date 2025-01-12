@@ -54,10 +54,9 @@ This functionality has this features:
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
 
+
 def do_test_populate_jira_from_backlog(crew):
-    inputs = {
-        "backlog": devops_backlog
-    }
+    inputs = {"backlog": devops_backlog}
     result = crew.kickoff(inputs=inputs)
     print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
 
@@ -84,4 +83,4 @@ def main(action: str):
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_populate_jira_from_backlog")
+    main("do_test_act_po")

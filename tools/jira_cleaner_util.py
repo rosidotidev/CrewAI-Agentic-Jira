@@ -1,4 +1,3 @@
-from easy_jira_wrapper import EasyJiraWrapper
 from jira import JIRA
 from dotenv import load_dotenv
 import os

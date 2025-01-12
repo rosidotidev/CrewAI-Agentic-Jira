@@ -1,4 +1,4 @@
-devops_backlog="""
+devops_backlog = """
 ## Epic
 ### Summary
 Implement PaaS Feature Toggle for Project Magellano

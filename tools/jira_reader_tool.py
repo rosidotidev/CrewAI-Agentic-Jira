@@ -22,9 +22,11 @@ class JiraReaderTool(BaseTool):
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
             # Query
             results = jira.search_issues(jql_query)
-            output=[]
+            output = []
             for issue in results:
-                output.append(f"*{issue.key}*: {issue.fields.summary} \r\n *Status*:{issue.fields.status.name} \r\n *Description*: {issue.fields.description}")
+                output.append(
+                    f"*{issue.key}*: {issue.fields.summary} \r\n *Status*:{issue.fields.status.name} \r\n *Description*: {issue.fields.description}"
+                )
 
             return output
         except Exception as e:
@@ -36,4 +38,3 @@ if __name__ == "__main__":
     results = tool._run("PROJECT=COBA")
     for issue in results:
         print(issue)
-

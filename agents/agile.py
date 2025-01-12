@@ -1,7 +1,7 @@
 from crewai import Agent
-from jira_reader_tool import JiraReaderTool
-from jira_story_creator_tool import JiraStoryCreatorTool
-from jira_epic_creator_tool import JiraEpicCreatorTool
+from tools.jira_reader_tool import JiraReaderTool
+from tools.jira_story_creator_tool import JiraStoryCreatorTool
+from tools.jira_epic_creator_tool import JiraEpicCreatorTool
 
 jira_reader_tool = JiraReaderTool()
 jira_creator_tool_for_story = JiraStoryCreatorTool()
@@ -49,22 +49,5 @@ jira_creator_agent = Agent(
     tools=[jira_creator_tool_for_story, jira_creator_tool_for_epic],
     backstory=(
         "Able to connect to the right tool and create jira issue, understand if it is a Story or an Epic"
-    ),
-)
-
-markdown_reporter_agent = Agent(
-    role="Markdown Reporter Agent",
-    goal="Receive an input in every format and convert it in a readable document in "
-         "markdown format. The content has to respect and protect the input content without"
-         "adding new knowledge. Drivers are "
-         "1) respect initial content "
-         "2) remove not necessary chars"
-         "3) convert the content if required in case the input is in csv,json, or other formats"
-         "4) start with '```markdown' ",
-
-    verbose=True,
-    backstory=(
-        "Deep learning of Markdown language, deep experience in review documents and "
-        "produce readable document"
     ),
 )
