@@ -20,7 +20,7 @@ def create_webapp(models):
     st.markdown(
         """
         <div style="background-color:#1976D2; padding:5px; border-radius:5px;">
-            <h3 style="color:white; text-align:center; margin:0; font-size:18px;">Jira Bot</h3>
+            <h3 style="color:white; text-align:center; margin:0; font-size:24px;">Smart Jira Assistant</h3>
         </div>
         """,
         unsafe_allow_html=True
@@ -53,7 +53,7 @@ def create_webapp(models):
     input_dict={key: value["input_field"] for key, value in models.items()}
     print(crew_dict)
     with col2:
-        bot_type = st.selectbox("Choose Bot:", descriptions_dict.values())
+        bot_type = st.selectbox("Choose Assistant:", descriptions_dict.values())
 
     # Multiline input in the second column
     with col1:
