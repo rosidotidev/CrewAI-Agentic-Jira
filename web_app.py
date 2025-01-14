@@ -1,7 +1,6 @@
 import streamlit as st
-from crewai import Crew
 
-# Imposta il layout wide per utilizzare tutta la larghezza della pagina
+# set layout wide
 st.set_page_config(layout="wide")
 
 def get_key_by_value(dictionary, target_value):
@@ -70,10 +69,7 @@ def create_webapp(models):
             input_field=input_dict[crew_key]
             inputs = {input_field: user_input}
             crew_response=crew.kickoff(inputs=inputs)
-            # Display the response with custom styling
-            #response = f"**Selected Bot:** {bot_type}<br>**Your Question:**<br>{user_input.strip()}<br><br>**Bot Response:** This is a mock response."
             response=crew_response.raw
-            #st.markdown(f'<div class="output-box"><br>{response}</div>', unsafe_allow_html=True)
             st.markdown(f'{response}', unsafe_allow_html=True)
 
 

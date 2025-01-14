@@ -1,14 +1,16 @@
 from dotenv import load_dotenv
 from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry
-from statememnts_repo import devops_backlog
+from statememnts_repo import devops_backlog_us
 
 
 def do_test_read(crew):
     inputs = {
-        "ask": "all the issues assigned to 'rosi Doti' in status In Progress",
+        "ask": "all issues under Epic COBA-343 assigned to 'rosi Doti'"
+               "",
     }
     result = crew.kickoff(inputs=inputs)
     print(f"test_read----> \r\n{result}")
+    return result
 
 
 def do_test_act_po(crew):
@@ -39,6 +41,7 @@ As Integration Architect I need to produce a new REST API for the entity 'slots'
     }
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
+    return result
 
 
 def do_test_act_cpo_1(crew):
@@ -53,18 +56,16 @@ This functionality has this features:
     }
     result = crew.kickoff(inputs=inputs)
     print(f"test_act_cpo----> \r\n{result}")
-
+    return result
 
 def do_test_populate_jira_from_backlog(crew):
-    inputs = {"backlog": devops_backlog}
+    inputs = {"backlog": devops_backlog_us}
     result = crew.kickoff(inputs=inputs)
     print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
-
+    return result
 
 def main(action: str):
     print("Hello crewAI")
-    # jira_reader_tool = JiraReaderTool()
-    # write all tasks, tools and crew here
 
     match action:
         case "do_test_read":
@@ -83,4 +84,4 @@ def main(action: str):
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_act_po")
+    main("do_test_read")

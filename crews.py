@@ -16,12 +16,13 @@ from tasks.reporter import (
     markdown_pode_backlog_jira_reporter_task,
     markdown_backlog_jira_reporter_task,
     markdown_backlog_reporter_task,
+    markdown_jira_reporter_task
 )
 from crewai import Crew
 
 crew = Crew(
-    agents=[jql_agent, jql_executor_agent],
-    tasks=[jql_task, jql_exe_task],
+    agents=[jql_agent, jql_executor_agent,markdown_reporter_agent],
+    tasks=[jql_task, jql_exe_task,markdown_jira_reporter_task],
     verbose=True,
 )
 

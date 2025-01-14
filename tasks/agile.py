@@ -7,7 +7,7 @@ from agents.agile import (
 )
 
 jql_task = Task(
-    description="generate the JQL query" "required to solve this ask:{ask}",
+    description="generate the JQL query required to solve this ask:{ask}",
     expected_output="a string and only a string for JQL with no unuseful white space",
     agent=jql_agent,
 )

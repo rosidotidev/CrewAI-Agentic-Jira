@@ -38,3 +38,18 @@ View the status of the PaaS toggle for monitoring.
   - The dashboard updates in real-time as the toggle state changes.
   - The last action including who toggled it and when is logged and displayed on the dashboard.
 """
+
+devops_backlog_us = """
+### User Story 1
+#### Summary
+Switch PaaS on or off to deployment environment.
+
+#### Description
+**Details**: This user story focuses on enabling DevOps engineers to toggle the PaaS features, aiding in controlling the deployment processes and resource usage effectively.
+
+**Acceptance Criteria**:
+  - The toggle functionality is accessible to users with DevOps permissions.
+  - Users receive a confirmation message when the toggle is used.
+  - The system tests the PaaS functionality upon toggling to ensure the service is operating correctly.
+
+"""

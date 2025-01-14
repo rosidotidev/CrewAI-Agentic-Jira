@@ -29,8 +29,10 @@ class JiraStoryCreatorTool(BaseTool):
                 "description": description,
                 "issuetype": {"name": type},
             }
-            if parent_key:
+            #Fix for onprem instance
+            if parent_key and parent_key != 'None':
                 issue_fields["parent"] = {"key": parent_key}
+            print(f"issue_fileds {issue_fields}")
             epic_issue = jira.create_issue(fields=issue_fields)
             print(epic_issue)
             return epic_issue.key
