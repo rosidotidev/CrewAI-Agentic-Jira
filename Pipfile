@@ -12,6 +12,7 @@ python-dotenv = "*"
 jira = "*"
 streamlit = "*"
 streamlit-chat = "*"
+gradio = "*"
 
 [dev-packages]
 
