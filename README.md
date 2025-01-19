@@ -1,5 +1,5 @@
 # CrewAI-Agentic-Jira
-
+<img src="asset/arch.png">
 ## 🚀 Introduction
 **CrewAI-Agentic-Jira** is a project designed to **automate processes in Jira** using the **CrewAI framework** and Generative AI agents. It simplifies common Jira operations like creating, querying, and managing issues, while showcasing the potential of AI-driven task automation.
 
