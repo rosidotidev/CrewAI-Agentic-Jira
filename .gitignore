@@ -164,3 +164,4 @@ cython_debug/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/*.xml
 /.idea/*.iml
+/.gradio/*

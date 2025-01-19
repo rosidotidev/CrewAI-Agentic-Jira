@@ -33,20 +33,25 @@ def create_webapp(models):
         )
 
         with gr.Row():
-            user_input = gr.TextArea(
-                label="Ask your question:",
-                placeholder="Enter your question here...",
-                elem_id="user_input",
-            )
-            dropdown = gr.Dropdown(
-                choices=dropdown_options,
-                value=dropdown_options[0],
-                label="Choose Assistant:",
-            )
+            with gr.Column(scale=3):
+                user_input = gr.TextArea(
+                    label="Ask your question:",
+                    placeholder="Enter your question here...",
+                    elem_id="user_input",
+                )
+            with gr.Column(scale=1):
+                dropdown = gr.Dropdown(
+                    choices=dropdown_options,
+                    value=dropdown_options[0],
+                    label="Choose Assistant:",
+                )
+                submit_button = gr.Button("Submit")
 
-        output = gr.Markdown(elem_id="output")
-
-        submit_button = gr.Button("Submit")
+        # Prepopulate the output with a default message
+        output = gr.Markdown(
+            "Output will be displayed here.<br><br><br><br>",
+            elem_id="output",
+        )
 
         submit_button.click(
             handle_input,
@@ -55,27 +60,3 @@ def create_webapp(models):
         )
 
     demo.launch(share=True)
-
-# Example models dictionary structure
-models = {
-    "crew_jira_PO_data_entry": {
-        "crew": None,  # Replace with actual crew object
-        "description": "Create a backlog and Jira User Stories on Jira",
-        "input_field": "user_story",
-    },
-    "crew_jira_PO": {
-        "crew": None,  # Replace with actual crew object
-        "description": "Create a backlog",
-        "input_field": "user_story",
-    },
-    "crew_jira_data_entry": {
-        "crew": None,  # Replace with actual crew object
-        "description": "Create Jira User Stories on Jira",
-        "input_field": "backlog",
-    },
-    "crew": {
-        "crew": None,  # Replace with actual crew object
-        "description": "Retrieves Jira issues",
-        "input_field": "ask",
-    },
-}

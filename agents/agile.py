@@ -42,7 +42,6 @@ jql_executor_agent = Agent(
     backstory=("Knows Jira, knows Jira main fields ,"
                "knows that if it has to search an issue under an Epic then it has to use 'parent' field of the issue:"
                "in the query substitute 'epiclink' with 'parent'"
-               
                "and is able to connect to the right tool and execute the query"),
 )
 
