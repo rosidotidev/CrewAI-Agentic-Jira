@@ -20,7 +20,7 @@ This project includes two main components:
 - **Dual Interfaces**:
   - **CLI**: Execute CrewAI flows directly from the command line with `main.py`.
   - **Web App**: Interact with Jira via a user-friendly Streamlit web interface (`main_web.py`).
-  - 
+  
 <img src="asset/web1.png">
 
 - **Customizable AI Agents**:
