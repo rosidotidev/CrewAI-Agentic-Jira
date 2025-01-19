@@ -1,5 +1,6 @@
 ## CrewAI-Agentic-Jira
 <img src="asset/arch.png">
+
 ---
 
 ## 🚀 Introduction
