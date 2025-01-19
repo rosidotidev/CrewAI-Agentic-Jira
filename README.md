@@ -20,13 +20,13 @@ This project includes two main components:
 - **Dual Interfaces**:
   - **CLI**: Execute CrewAI flows directly from the command line with `main.py`.
   - **Web App**: Interact with Jira via a user-friendly Streamlit web interface (`main_web.py`).
-
+<img src="asset/web1.png">
 - **Customizable AI Agents**:
-  - Select from multiple AI-powered bots, each tailored for specific Jira operations.
+  - Select from multiple AI-powered agents, each tailored for specific Jira operations.
   - Extendable backend for adding new bots and workflows.
 
 - **Integration with Jira**:
-  - Uses Jira's REST API to perform real-time operations.
+  - Uses Jira's Python API to perform real-time operations.
   - Securely manages API tokens for authentication.
 
 ---
@@ -57,12 +57,11 @@ This project includes two main components:
    Create a `.env` file in the project directory and add the following variables:
    ```
    JIRA_URL=...
-   OPENAI_API_KEY=...
-   JIRA_URL=...
    JIRA_USERNAME=...
    JIRA_API_TOKEN=...
-   OPENAI_MODEL_NAME=...
    JIRA_PROJECT=
+   OPENAI_API_KEY=...
+   OPENAI_MODEL_NAME=...
    ```
 
 4. **Run the Application**
