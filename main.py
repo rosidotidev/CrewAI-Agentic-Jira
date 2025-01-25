@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry
+from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry, crew_jira_updater
 from statememnts_repo import devops_backlog_us
 
 
@@ -63,6 +63,12 @@ def do_test_populate_jira_from_backlog(crew):
     result = crew.kickoff(inputs=inputs)
     print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
     return result
+def do_test_jira_updater(crew):
+    inputs = {"list_of_stories": "COBA-355,COBA-354",
+              "request":"set labels to 'pippo_committed' and 'DevOps' and assign to 'roberto73'"}
+    result = crew.kickoff(inputs=inputs)
+    print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
+    return result
 
 def main(action: str):
     print("Hello crewAI")
@@ -78,10 +84,11 @@ def main(action: str):
             do_test_act_cpo_1(crew_jira_PO_data_entry)
         case "do_test_populate_jira_from_backlog":
             do_test_populate_jira_from_backlog(crew_jira_data_entry)
+        case "do_test_jira_updater":do_test_jira_updater(crew_jira_updater)
         case _:
             print("no action")
 
 
 if __name__ == "__main__":
     load_dotenv()
-    main("do_test_read")
+    main("do_test_jira_updater")

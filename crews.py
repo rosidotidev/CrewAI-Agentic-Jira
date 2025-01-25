@@ -3,6 +3,7 @@ from agents.agile import (
     jql_executor_agent,
     jql_agent,
     jira_creator_agent,
+    jira_updater_agent
 )
 from agents.reporter import markdown_reporter_agent
 from tasks.agile import (
@@ -11,6 +12,7 @@ from tasks.agile import (
     jql_exe_task,
     jira_po_data_entry_task,
     jira_data_entry_task,
+    jira_updater_task
 )
 from tasks.reporter import (
     markdown_pode_backlog_jira_reporter_task,
@@ -44,5 +46,11 @@ crew_jira_PO_data_entry = Crew(
 crew_jira_data_entry = Crew(
     agents=[jira_creator_agent, markdown_reporter_agent],
     tasks=[jira_data_entry_task, markdown_backlog_jira_reporter_task],
+    verbose=True,
+)
+
+crew_jira_updater = Crew(
+    agents=[jira_updater_agent],
+    tasks=[jira_updater_task],
     verbose=True,
 )

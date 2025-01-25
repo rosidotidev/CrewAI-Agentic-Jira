@@ -4,6 +4,7 @@ from agents.agile import (
     jql_executor_agent,
     jql_agent,
     jira_creator_agent,
+    jira_updater_agent
 )
 
 jql_task = Task(
@@ -41,4 +42,18 @@ jira_data_entry_task = Task(
     "is able to create jira user story or Epic",
     expected_output="create a list of new jira user stories (or an Epic) on Jira",
     agent=jira_creator_agent,
+)
+
+jira_updater_task = Task(
+    description="Given a list of jira stories or epics"
+                "------"
+                " {list_of_stories}"
+                "------"
+                "is able to update the stories or epics looking to this request"
+                
+    "---------------"
+    "{request}"
+    "---------------",
+    expected_output="update a list of jira user stories (or epics) on Jira",
+    agent=jira_updater_agent,
 )
