@@ -8,7 +8,7 @@
 
 This project includes two main components:
 1. A **command-line interface (CLI)** for executing CrewAI flows.
-2. A **web application** built with Streamlit, providing an intuitive way to interact with the system and explore its features.
+2. A **web application** built with Gradio, providing an intuitive way to interact with the system and explore its features.
 
 ---
 
@@ -19,7 +19,8 @@ This project includes two main components:
   
 - **Dual Interfaces**:
   - **CLI**: Execute CrewAI flows directly from the command line with `main.py`.
-  - **Web App**: Interact with Jira via a user-friendly Streamlit web interface (`main_web.py`).
+  - **Web App**: Interact with Jira via a user-friendly Gradio
+  -  web interface (`main_web_gradio.py`).
   
 <img src="asset/web1.png">
 
@@ -74,7 +75,7 @@ This project includes two main components:
 
    - **For Web Application**:
      ```bash
-     streamlit run main_web.py
+     python main_web_gradio.py
      ```
 
 ---
@@ -85,8 +86,8 @@ Here’s an overview of the key files in this project:
 - **`main.py`**:
   - A command-line tool to execute CrewAI flows for automating Jira tasks.
   
-- **`main_web.py`**:
-  - A Streamlit-based web interface for interacting with CrewAI and Jira.
+- **`main_web_gradio.py`**:
+  - A Gradio-based web interface for interacting with CrewAI and Jira.
 
 - **`Pipfile`**:
   - Contains all dependencies managed by pipenv.
@@ -106,7 +107,7 @@ Find the full source code and contribute to the project here:
 ---
 
 ## 🎯 About the Web Interface
-The included **Streamlit-based web interface** demonstrates the capabilities of CrewAI-Agentic-Jira:
+The included **Gradio-based web interface** demonstrates the capabilities of CrewAI-Agentic-Jira:
 - Allows users to select AI agents via a dropdown.
 - Provides a multi-line input field for complex queries or descriptions.
 - Displays bot responses and real-time interactions with Jira.
