@@ -64,8 +64,8 @@ def do_test_populate_jira_from_backlog(crew):
     print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
     return result
 def do_test_jira_updater(crew):
-    inputs = {"list_of_stories": "COBA-355,COBA-354",
-              "request":"set labels to 'pippo_committed' and 'DevOps' and assign to 'roberto73'"}
+    inputs = {"list_of_stories_with_update_request": "set labels to 'pippo_committed' and 'DevOps' "
+                                                     "and assign to 'roberto sidoti' from COBA-353 to COBA-356"}
     result = crew.kickoff(inputs=inputs)
     print(f"do_test_populate_jira_from_backlog----> \r\n{result}")
     return result

@@ -1,6 +1,6 @@
 import gradio as gr
 from dotenv import load_dotenv
-from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry
+from crews import crew, crew_jira_PO, crew_jira_PO_data_entry, crew_jira_data_entry, crew_jira_updater
 
 def ask(prompt):
     inputs = {
@@ -31,6 +31,11 @@ def start_web_app_blue():
         "crew": crew_jira_data_entry,
         "description": "Create Jira User Stories on Jira",
         "input_field": "backlog",
+    }
+    models["crew_jira_updater"] = {
+        "crew": crew_jira_updater,
+        "description": "Bulk update Jira stories",
+        "input_field": "list_of_stories_with_update_request",
     }
     models["crew"] = {
         "crew": crew,

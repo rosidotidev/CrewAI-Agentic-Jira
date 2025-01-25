@@ -45,15 +45,11 @@ jira_data_entry_task = Task(
 )
 
 jira_updater_task = Task(
-    description="Given a list of jira stories or epics"
+    description="Given a list of jira stories or epics and a update request"
                 "------"
-                " {list_of_stories}"
+                " {list_of_stories_with_update_request}"
                 "------"
-                "is able to update the stories or epics looking to this request"
-                
-    "---------------"
-    "{request}"
-    "---------------",
+                "is able to update the stories or epics looking to this request",
     expected_output="update a list of jira user stories (or epics) on Jira",
     agent=jira_updater_agent,
 )

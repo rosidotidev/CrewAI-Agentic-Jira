@@ -66,7 +66,13 @@ jira_updater_agent = Agent(
     goal="update Jira issues using the right tool and mapping the right fields to be updated.",
     verbose=True,
     tools=[jira_story_updater_tool],
-    backstory=("Able to connect to the right tool and update jira issue, Receives single jira story "
-               "or epic or a list of them, retrieves the keys and invokes the tools in order to update"
+    backstory=("Able to connect to the right tool and update jira issue, "
+               "Receives single jira story "
+               "or epic or a list of them, retrieves the keys and invokes the tools in order to update."
+               "it behaves in thos steps:"
+               "1) extract list of user stoirs/epik keys"
+               "2) extract fields to be updated"
+               "3) update each jira story updating right fields"
+
     ),
 )
