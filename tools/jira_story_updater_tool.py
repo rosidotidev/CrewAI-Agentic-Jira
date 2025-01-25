@@ -25,12 +25,9 @@ class JiraStoryUpdaterTool(BaseTool):
         username = os.environ["JIRA_USERNAME"]
         api_token = os.environ["JIRA_API_TOKEN"]
         jira_options = {"server": jira_url}
-        jira_project = os.environ["JIRA_PROJECT"]
-
         try:
             # Login
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
-            print(f" debug  JiraStoryUpdaterTool {story_id} {fields}")
             # Update the story
             jira.issue(story_id).update(fields=fields)
             if "assignee" in fields.keys():
