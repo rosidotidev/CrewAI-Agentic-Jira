@@ -11,7 +11,7 @@ markdown_reporter_agent = Agent(
     "4) start with '```markdown' ",
     verbose=True,
     backstory=(
-        "Deep learning of Markdown language, deep experience in review documents and "
+        "Deep knowledge of Markdown language, deep experience in review documents and "
         "produce readable document"
     ),
 )

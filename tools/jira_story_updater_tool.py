@@ -30,10 +30,10 @@ class JiraStoryUpdaterTool(BaseTool):
         try:
             # Login
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
-
+            print(f" debug  JiraStoryUpdaterTool {story_id} {fields}")
             # Update the story
             jira.issue(story_id).update(fields=fields)
-            if fields["assignee"]:
+            if "assignee" in fields.keys():
                 jira.assign_issue(story_id,fields["assignee"])
             return f"Story {story_id} has been successfully updated."
         except Exception as e:

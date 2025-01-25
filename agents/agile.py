@@ -39,14 +39,15 @@ jira_po_agent = Agent(
 
 jql_executor_agent = Agent(
     role="Jira JQL Executor",
-    goal="receive instructions, transform them in JQL (Jira  Query Language) execute the query JQL query, max 3 attempts",
+    goal="receive instructions, transform them in JQL (Jira  Query Language) execute the query JQL query, max 3 attempts."
+         "returns the JQL query and the result",
     verbose=True,
     max_execution_time=3,
     tools=[jira_reader_tool],
     backstory=("Knows Jira, knows Jira most important fields ,"
                "knows that if it has to search an issue under an Epic then it has to use 'parent' field of the issue:"
                "in the query substitute 'epiclink' with 'parent'"
-               "and is able to connect to the right tool and execute the query"),
+               "and is able to connect to the right tool and execute the query returning the query and the result"),
 )
 
 jira_creator_agent = Agent(
@@ -69,8 +70,8 @@ jira_updater_agent = Agent(
     backstory=("Able to connect to the right tool and update jira issue, "
                "Receives single jira story "
                "or epic or a list of them, retrieves the keys and invokes the tools in order to update."
-               "it behaves in thos steps:"
-               "1) extract list of user stoirs/epik keys"
+               "it behaves in those steps:"
+               "1) extract list of user stories/epic keys"
                "2) extract fields to be updated"
                "3) update each jira story updating right fields"
 
