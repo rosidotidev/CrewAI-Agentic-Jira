@@ -13,7 +13,6 @@ from tasks.agile import (
     jira_po_data_entry_task,
     jira_data_entry_task,
     jira_updater_task,
-
 )
 from tasks.reporter import (
     markdown_pode_backlog_jira_reporter_task,
