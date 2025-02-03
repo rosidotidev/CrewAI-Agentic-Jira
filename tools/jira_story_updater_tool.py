@@ -7,7 +7,8 @@ class JiraStoryUpdaterTool(BaseTool):
     name: str = "Jira Update Tool"
     description: str = (
         "This tool allows the user to update a Jira story by providing the story ID and new fields to update."
-        "To update the epic link or to assign a epic to a story uses parent:{'key':epic-key}"
+        "To update the epic link or to assign a epic to a story uses parent:{'key':epic-key},"
+        "To assign the epic or the the story to an assignee uses {'assignee':assignee-name}"
     )
 
     def _run(self, story_id: str, fields: dict) -> str:
@@ -27,6 +28,7 @@ class JiraStoryUpdaterTool(BaseTool):
         api_token = os.environ["JIRA_API_TOKEN"]
         jira_options = {"server": jira_url}
         try:
+            print(f"JiraStoryUpdaterTool {fields}")
             # Login
             jira = JIRA(options=jira_options, basic_auth=(username, api_token))
             # Update the story
@@ -46,7 +48,7 @@ if __name__ == "__main__":
     tool = JiraStoryUpdaterTool()
 
     # Example invocation via ToolAgent
-    story_id = "COBA-341"  # Replace with the actual story ID
+    story_id = "COBA-338"  # Replace with the actual story ID
     fields = {"labels": ["careca_proposed"],"assignee":"roberto73"}  # Adding a label
 
     result = tool._run(story_id, fields)

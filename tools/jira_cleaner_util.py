@@ -47,9 +47,23 @@ class JiraCleanerUtil:
                     print(f"Error on delete: {e}")
         except Exception as e:
             print(f"Error: {e}")
+    def removebyJQL(self, jql:str ) -> None:
+
+        try:
+            jql_query = f"{jql}"
+            issues = self.jira.search_issues(jql_query, maxResults=1000)
+            for issue in issues:
+                try:
+                    issue.delete()
+                    print(f"Issue {issue.key} removed ")
+                except Exception as e:
+                    print(f"Error on delete: {e}")
+        except Exception as e:
+            print(f"Error: {e}")
 
 
 if __name__ == "__main__":
     jira_util = JiraCleanerUtil()
-    jira_util.removeAll("COBA")
+    #jira_util.removeAll("COBA")
     # jira_util.removebyKey("COBA-115")
+    jira_util.removebyJQL("project = 'COBA' and key > 'COBA-400'")
